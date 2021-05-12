@@ -17,7 +17,7 @@ app.post(
     '/order',
     body('first_name').isString().isLength({ min: 1, max: 50}),
     body('last_name').isString().isLength({ min: 1, max: 50}),
-    body('phone_number').isMobilePhone().isLength({ min:10, max: 10 }),
+    body('phone_number').isString().isMobilePhone().isLength({ min:10, max: 10 }),
     body('product_id').isInt().not().isString(),
     (req, res) => {
      Order.createOrder(req, res, dbClient.db("mySecondDatabase"))
